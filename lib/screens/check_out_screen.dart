@@ -43,7 +43,7 @@ class CheckOutScreen extends StatelessWidget {
                 buttonColor: Colors.green.shade900,
                 text: 'Place Order',
                 onPress: () {
-                  if (Provider.of<Cart>(context).cartLength() > 0) {
+                  if (Provider.of<Cart>(context).length() > 0) {
                     Toast.show("Order successfully placed", context,
                         duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
                     Provider.of<Cart>(context).clearCart();

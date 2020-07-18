@@ -27,7 +27,7 @@ Widget getFinalAmount(double totalAmount) {
                 fontSize: 20),
           ),
           Text(
-            'INR $totalAmount',
+            'INR ${double.parse((totalAmount).toStringAsFixed(2))}',
             style: TextStyle(color: Colors.green.shade400, fontSize: 20),
           )
         ],

@@ -14,34 +14,44 @@ class BillCardList extends StatelessWidget {
     double totalAmount = 0;
 
     return Consumer<Cart>(
-        builder: (BuildContext context, Cart value, Widget child) {
-      return ListView.builder(
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          if (index == value.cartLength()) {
-            return getFinalAmount(totalAmount);
-          }
-          String dishName = value.dishesInCart[index];
-
-          for (var dish in dishes) {
-            if (dish.dishName == dishName) {
-              this.dish = dish;
-              totalAmount = totalAmount +
-                  (this.dish.price *
-                      Provider.of<Cart>(context).numberOfSameDishes[dishName]);
-              break;
+        builder: (BuildContext context, Cart cart, Widget child) {
+      return SingleChildScrollView(
+        child: ListView.builder(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            if (index == cart.length()) {
+              return getFinalAmount(totalAmount);
             }
-          }
+            String dishName = cart.dishesInCart[index];
+            calculateTotalAmount(dishes, dishName, totalAmount, cart);
 
-          return BillCard(
-            dishName: dishName,
-            dishPrice: dish.price,
-            dishType: dish.dishType,
-            dishCalories: dish.dishCalories,
-          );
-        },
-        itemCount: value.cartLength() + 1,
+            if (cart.numberOfSameDishes[dishName] > 0) {
+              return BillCard(
+                dishName: dish.dishName,
+                dishPrice: dish.price,
+                dishType: dish.dishType,
+                dishCalories: dish.dishCalories,
+              );
+            } else {
+              return Container();
+            }
+          },
+          itemCount: cart.length() + 1,
+        ),
       );
     });
+  }
+
+  void calculateTotalAmount(
+      List<Dish> dishes, String dishName, double totalAmount, Cart cart) {
+    for (var dish in dishes) {
+      if (dish.dishName == dishName) {
+        this.dish = dish;
+        totalAmount =
+            totalAmount + (this.dish.price * cart.numberOfSameDishes[dishName]);
+        break;
+      }
+    }
   }
 }

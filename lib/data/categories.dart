@@ -7,10 +7,6 @@ class Category {
     _categoryName = categoryName;
   }
 
-  set categoryName(String value) {
-    _categoryName = value;
-  }
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

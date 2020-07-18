@@ -17,7 +17,6 @@ class _ValueSelectorState extends State<ValueSelector> {
   int value = 0;
 
   @override
-  // TODO: implement widget
   ValueSelector get widget => super.widget;
 
   @override

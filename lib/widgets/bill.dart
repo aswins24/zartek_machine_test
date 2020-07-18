@@ -23,7 +23,7 @@ class BillWidget extends StatelessWidget {
             ),
             child: Container(
               child: Text(
-                '${Provider.of<Cart>(context).cartLength()} Dishe(s) - ${Provider.of<Cart>(context).itemLength()} Item(s)',
+                '${Provider.of<Cart>(context).length()} Dishe(s) - ${Provider.of<Cart>(context).itemLength()} Item(s)',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                 textAlign: TextAlign.center,

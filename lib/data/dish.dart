@@ -20,51 +20,19 @@ class Dish {
 
   int get dishType => _dishType;
 
-  set dishType(int value) {
-    _dishType = value;
-  }
+  String get dishName => _dishName;
 
   String get dishCategory => _dishCategory;
 
-  set dishCategory(String value) {
-    _dishCategory = value;
-  }
-
-  String get dishName => _dishName;
+  double get price => _price;
 
   String get dishImage => _dishImage;
 
-  set dishImage(String value) {
-    _dishImage = value;
-  }
-
   bool get addOns => _addOns;
-
-  set addOns(bool value) {
-    _addOns = value;
-  }
 
   double get dishCalories => _dishCalories;
 
-  set dishCalories(double value) {
-    _dishCalories = value;
-  }
-
-  double get price => _price;
-
-  set price(double value) {
-    _price = value;
-  }
-
   String get dishDescription => _dishDescription;
-
-  set dishDescription(String value) {
-    _dishDescription = value;
-  }
-
-  set dishName(String value) {
-    _dishName = value;
-  }
 
   @override
   String toString() {

@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isBusy = false;
   FirebaseUser user;
   @override
-  // TODO: implement widget
   HomeScreen get widget => super.widget;
 
   @override

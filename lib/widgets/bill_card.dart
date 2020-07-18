@@ -4,32 +4,22 @@ import 'package:provider/provider.dart';
 import 'package:zartekmachinetest/data/cart.dart';
 import 'package:zartekmachinetest/widgets/item_number_selector.dart';
 
-class BillCard extends StatefulWidget {
+class BillCard extends StatelessWidget {
   final String dishName;
   final double dishPrice;
   final double dishCalories;
   final int dishType;
+  double totalPrice;
 
   BillCard({this.dishName, this.dishPrice, this.dishCalories, this.dishType});
 
   @override
-  _BillCardState createState() => _BillCardState();
-}
-
-class _BillCardState extends State<BillCard> {
-  String dishName;
-  double dishPrice;
-  double dishCalories;
-  int dishType;
-  double totalPrice;
-
-  @override
-  // TODO: implement widget
-  BillCard get widget => super.widget;
-  @override
   Widget build(BuildContext context) {
-    totalPrice =
-        dishPrice * Provider.of<Cart>(context).numberOfSameDishes[dishName];
+    var numberOfSameDish =
+        Provider.of<Cart>(context).numberOfSameDishes[dishName];
+    if (numberOfSameDish != null) {
+      totalPrice = dishPrice * numberOfSameDish;
+    }
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 1),
       child: Container(
@@ -93,15 +83,5 @@ class _BillCardState extends State<BillCard> {
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    dishName = widget.dishName;
-    dishPrice = widget.dishPrice;
-    dishCalories = widget.dishCalories;
-    dishType = widget.dishType;
   }
 }

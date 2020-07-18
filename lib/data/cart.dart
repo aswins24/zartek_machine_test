@@ -15,10 +15,11 @@ class Cart extends ChangeNotifier {
   }
 
   void removeFromCart(String dishName) {
-    if (numberOfSameDishes[dishName] > 0) {
+    if (numberOfSameDishes[dishName] != null &&
+        numberOfSameDishes[dishName] > 0) {
       numberOfSameDishes[dishName] = numberOfSameDishes[dishName] - 1;
       if (numberOfSameDishes[dishName] == 0) {
-        dishesInCart.remove(dishName);
+        removeDishFromCart(dishName);
       }
       notifyListeners();
     }
@@ -30,7 +31,7 @@ class Cart extends ChangeNotifier {
     notifyListeners();
   }
 
-  int cartLength() {
+  int length() {
     return dishesInCart.length;
   }
 
@@ -50,6 +51,10 @@ class Cart extends ChangeNotifier {
   }
 
   List<String> getDishesInCart() {
-    return dishesInCart;
+    return List.unmodifiable(dishesInCart);
+  }
+
+  void removeDishFromCart(String dishName) {
+    dishesInCart.remove(dishName);
   }
 }

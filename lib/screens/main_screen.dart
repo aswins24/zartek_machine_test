@@ -23,7 +23,6 @@ class _MainScreenState extends State<MainScreen> {
   FirebaseUser user;
 
   @override
-  // TODO: implement widget
   MainScreen get widget => super.widget;
 
   @override
@@ -74,7 +73,7 @@ class _MainScreenState extends State<MainScreen> {
                               child: new Center(
                                 child: new Text(
                                   Provider.of<Cart>(context)
-                                      .cartLength()
+                                      .length()
                                       .toString(),
                                   style: new TextStyle(
                                       color: Colors.white,

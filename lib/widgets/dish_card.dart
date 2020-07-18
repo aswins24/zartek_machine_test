@@ -33,7 +33,6 @@ class _DishCardState extends State<DishCard> {
   bool addOn;
 
   @override
-  // TODO: implement widget
   DishCard get widget => super.widget;
 
   @override
