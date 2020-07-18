@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toast/toast.dart';
+import 'package:zartekmachinetest/data/cart.dart';
 import 'package:zartekmachinetest/widgets/bill.dart';
-import 'package:zartekmachinetest/widgets/round_text_image_button.dart';
 import 'package:zartekmachinetest/widgets/rounded_button.dart';
 
 class CheckOutScreen extends StatelessWidget {
@@ -40,7 +42,20 @@ class CheckOutScreen extends StatelessWidget {
               child: RoundedButton(
                 buttonColor: Colors.green.shade900,
                 text: 'Place Order',
-                onPress: () {},
+                onPress: () {
+                  if (Provider.of<Cart>(context).cartLength() > 0) {
+                    Toast.show("Order successfully placed", context,
+                        duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                    Provider.of<Cart>(context).clearCart();
+                    Navigator.pop(context);
+                  } else {
+                    Toast.show(
+                        "Please add something to cart before placing order",
+                        context,
+                        duration: Toast.LENGTH_LONG,
+                        gravity: Toast.BOTTOM);
+                  }
+                },
               ),
             )
           ],

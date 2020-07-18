@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:zartekmachinetest/data/dish.dart';
+
 
 class Cart extends ChangeNotifier {
   List<String> dishesInCart = [];
@@ -23,6 +23,12 @@ class Cart extends ChangeNotifier {
       }
       notifyListeners();
     }
+  }
+
+  void clearCart() {
+    numberOfSameDishes = Map();
+    dishesInCart = [];
+    notifyListeners();
   }
 
   int cartLength() {
