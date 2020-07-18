@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-
 class Cart extends ChangeNotifier {
   List<String> dishesInCart = [];
   Map<String, int> numberOfSameDishes = Map();
