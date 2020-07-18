@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+import 'package:zartekmachinetest/data/category_list.dart';
+import 'package:zartekmachinetest/data/dish_list.dart';
 import 'user_info.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -31,6 +34,8 @@ class NavigationDrawer extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: () async {
+              Provider.of<CategoryList>(context).clearList();
+              Provider.of<DishList>(context).clearDishList();
               await googleSignIn.signOut();
               Navigator.of(context).pop();
               Navigator.pop(context);

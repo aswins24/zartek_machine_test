@@ -17,4 +17,9 @@ class CategoryList extends ChangeNotifier {
   int get categoryListLength {
     return _categoryList.length;
   }
+
+  void clearList() {
+    this._categoryList.clear();
+    notifyListeners();
+  }
 }

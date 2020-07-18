@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:provider/provider.dart';
+import 'package:zartekmachinetest/data/cart.dart';
 import 'package:zartekmachinetest/screens/main_screen.dart';
 import 'package:zartekmachinetest/screens/phone_logIn_screen.dart';
 import 'package:zartekmachinetest/widgets/round_text_image_button.dart';
@@ -58,6 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: 'assets/images/google.png',
                     text: 'Google',
                     onPress: () {
+                      Provider.of<CategoryList>(context).clearList();
+                      Provider.of<Cart>(context).clearCart();
+                      Provider.of<DishList>(context).clearDishList();
                       signInWithGoogle(context).then((value) {
                         if (value != null)
                           Navigator.push(

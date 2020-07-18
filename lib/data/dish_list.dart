@@ -28,4 +28,9 @@ class DishList extends ChangeNotifier {
   int get dishListLength {
     return _dishList.length;
   }
+
+  void clearDishList() {
+    dishList.clear();
+    notifyListeners();
+  }
 }

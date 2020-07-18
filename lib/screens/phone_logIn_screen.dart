@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:zartekmachinetest/data/cart.dart';
 import 'package:zartekmachinetest/data/category_list.dart';
 import 'package:zartekmachinetest/data/dish_list.dart';
 import 'package:zartekmachinetest/helper/mock_network.dart';
@@ -93,6 +94,9 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 padding: EdgeInsets.all(16),
                 onPressed: () {
+                  Provider.of<CategoryList>(context).clearList();
+                  Provider.of<Cart>(context).clearCart();
+                  Provider.of<DishList>(context).clearDishList();
                   //code for sign in
                   _submitOTP(context);
                 },
