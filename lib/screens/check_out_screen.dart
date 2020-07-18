@@ -19,6 +19,7 @@ class CheckOutScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
+        physics: ScrollPhysics(),
         child: Column(
           children: <Widget>[
             Column(

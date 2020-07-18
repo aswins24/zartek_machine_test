@@ -11,6 +11,7 @@ class BillWidget extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.only(top: 10, right: 20, left: 20),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -23,7 +24,7 @@ class BillWidget extends StatelessWidget {
             ),
             child: Container(
               child: Text(
-                '${Provider.of<Cart>(context).length()} Dishe(s) - ${Provider.of<Cart>(context).itemLength()} Item(s)',
+                '${Provider.of<Cart>(context).length()} Dish(es) - ${Provider.of<Cart>(context).itemLength()} Item(s)',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                 textAlign: TextAlign.center,

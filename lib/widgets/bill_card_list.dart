@@ -17,6 +17,7 @@ class BillCardList extends StatelessWidget {
         builder: (BuildContext context, Cart cart, Widget child) {
       return SingleChildScrollView(
         child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           itemBuilder: (context, index) {
