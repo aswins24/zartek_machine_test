@@ -25,7 +25,15 @@ class BillCardList extends StatelessWidget {
               return getFinalAmount(totalAmount);
             }
             String dishName = cart.dishesInCart[index];
-            calculateTotalAmount(dishes, dishName, totalAmount, cart);
+
+            for (var dish in dishes) {
+              if (dish.dishName == dishName) {
+                this.dish = dish;
+                totalAmount = totalAmount +
+                    (this.dish.price * cart.numberOfSameDishes[dishName]);
+                break;
+              }
+            }
 
             if (cart.numberOfSameDishes[dishName] > 0) {
               return BillCard(
@@ -42,17 +50,5 @@ class BillCardList extends StatelessWidget {
         ),
       );
     });
-  }
-
-  void calculateTotalAmount(
-      List<Dish> dishes, String dishName, double totalAmount, Cart cart) {
-    for (var dish in dishes) {
-      if (dish.dishName == dishName) {
-        this.dish = dish;
-        totalAmount =
-            totalAmount + (this.dish.price * cart.numberOfSameDishes[dishName]);
-        break;
-      }
-    }
   }
 }
